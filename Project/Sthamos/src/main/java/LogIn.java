@@ -1,3 +1,9 @@
+
+import java.awt.Image;
+import java.awt.MediaTracker;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -14,8 +20,7 @@ public class LogIn extends javax.swing.JFrame {
      */
     public LogIn() {
         initComponents();
-        lblLogo.setIcon("/logo.svg");
-        
+        resizeImg();
     }
 
     @SuppressWarnings("unchecked")
@@ -34,17 +39,17 @@ public class LogIn extends javax.swing.JFrame {
         PnlLogin.setLayout(PnlLoginLayout);
         PnlLoginLayout.setHorizontalGroup(
             PnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PnlLoginLayout.createSequentialGroup()
-                .addGap(87, 87, 87)
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(91, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PnlLoginLayout.createSequentialGroup()
+                .addContainerGap(52, Short.MAX_VALUE)
+                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(41, 41, 41))
         );
         PnlLoginLayout.setVerticalGroup(
             PnlLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PnlLoginLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(lblLogo, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(176, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -94,8 +99,19 @@ public class LogIn extends javax.swing.JFrame {
                 new LogIn().setVisible(true);
             }
         });
-        
-        
+    }
+    
+    public void resizeImg(){
+        // Imagen Logo
+        ImageIcon icon = new ImageIcon("C:\\Users\\emili\\Documents\\TEC\\4to semestre\\TAP\\STATHMOS\\Stathmos\\Project\\Sthamos\\src\\logo.png");
+        Image img =icon.getImage();
+        Image scaledImg = img.getScaledInstance(200, 200, java.awt.Image.SCALE_SMOOTH); // da escala a la Imagen
+        icon = new ImageIcon(scaledImg);
+        if(icon.getImageLoadStatus() == MediaTracker.ERRORED) {
+            System.err.println("Error"); // Imagen no encontrada
+        } else {
+            lblLogo.setIcon(icon);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
